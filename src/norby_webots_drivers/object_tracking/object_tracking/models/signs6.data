@@ -1,0 +1,5 @@
+classes = 6
+train  = /home/frantzcito/Project/Object_Detector/Datasets/train.txt
+valid  = /home/frantzcito/Project/Object_Detector/Datasets/train.txt
+names = /home/frantzcito/Project/Object_Detector/Datasets/classes.names
+backup = /home/frantzcito/backup6

@@ -1,0 +1,9 @@
+classes= 6
+train  = /home/frantzcito/Project/Object_Detector/Datasets/train.txt
+valid  = /home/frantzcito/Project/Object_Detector/Datasets/train.txt
+#valid = data/coco_val_5k.list
+names = /home/frantzcito/Project/Object_Detector/Datasets/classes.names
+#names = /home/frantzcito/Project/Object_Detector/Datasets/obj.namesz
+#names = /home/frantzcito/Project/Object_Detector/Datasets/sign_classes.names
+backup = /home/frantzcito/backup3
+#eval=coco

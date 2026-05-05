@@ -1,0 +1,485 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Robot
+# Extracted from: /home/frant/norby/src/norby_webots_drivers/urdf/webots.urdf
+
+PROTO Robot [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Robot"  # Is `Robot.name`.
+  field  SFString    controller      "void"   # Is `Robot.controller`.
+  field  MFString    controllerArgs  []       # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""       # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE    # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE     # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE    # Is `Robot.selfCollision`.
+  field  SFBool      staticBase      TRUE     # Defines if the robot base should be pinned to the static environment.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance PBRAppearance {
+          baseColor 0.500000 0.500000 0.500000
+          roughness 1.000000
+          metalness 0
+        }
+        geometry Box {
+           size 0.100000 0.050000 0.100000
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 1.000000 -0.000000 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "left_wheel_motor"
+            maxVelocity 10.0
+            maxTorque 10.0
+          }
+          PositionSensor {
+            name "left_wheel_motor_sensor"
+          }
+        ]
+        endPoint Solid {
+          rotation -0.000000 0.000000 1.000000 1.570000
+          children [
+            Pose {
+              translation -0.000048 0.060000 0.000000
+              rotation 1.000000 0.000000 0.000000 1.570796
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.500000 0.500000 0.500000
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    radius 0.04
+                    height 0.02
+                  }
+                }
+              ]
+            }
+          ]
+          name "left_wheel"
+          boundingObject Pose {
+            translation -0.000048 0.060000 0.000000
+            rotation 1.000000 0.000000 0.000000 1.570796
+            children [
+              Cylinder {
+                radius 0.04
+                height 0.02
+              }
+            ]
+          }
+          physics Physics {
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 1.000000 -0.000000 0.000000
+          anchor -0.000048 0.060000 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "right_wheel_motor"
+            maxVelocity 10.0
+            maxTorque 10.0
+          }
+          PositionSensor {
+            name "right_wheel_motor_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.000048 0.060000 0.000000
+          rotation -0.000000 0.000000 1.000000 1.570000
+          children [
+            Pose {
+              translation 0.000048 -0.060000 -0.000000
+              rotation 1.000000 0.000000 0.000000 1.570796
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.500000 0.500000 0.500000
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    radius 0.04
+                    height 0.02
+                  }
+                }
+              ]
+            }
+          ]
+          name "right_wheel"
+          boundingObject Pose {
+            translation 0.000048 -0.060000 -0.000000
+            rotation 1.000000 0.000000 0.000000 1.570796
+            children [
+              Cylinder {
+                radius 0.04
+                height 0.02
+              }
+            ]
+          }
+          physics Physics {
+          }
+        }
+      }
+      Solid {
+        translation -0.029952 -0.060000 -0.050000
+        rotation 0.000000 1.000000 0.000000 1.870000
+        children [
+          Pose {
+            translation 0.000048 -0.060000 -0.000000
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 0
+                }
+                geometry Box {
+                   size 0.010000 0.010000 0.010000
+                }
+              }
+            ]
+          }
+        ]
+        name "sonar_back_right_sensor"
+        boundingObject Pose {
+          translation 0.000048 -0.060000 -0.000000
+          children [
+            Box {
+               size 0.010000 0.010000 0.010000
+            }
+          ]
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation -0.030000 0.000000 0.050000
+        rotation -0.000000 1.000000 -0.000000 4.413185
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.010000 0.010000 0.010000
+            }
+          }
+        ]
+        name "sonar_front_right_sensor"
+        boundingObject Box {
+           size 0.010000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.030000 0.000000 -0.050000
+        rotation 0.000000 1.000000 0.000000 1.270000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.010000 0.010000 0.010000
+            }
+          }
+        ]
+        name "sonar_back_left_sensor"
+        boundingObject Box {
+           size 0.010000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.030000 0.000000 0.050000
+        rotation 0.000000 -1.000000 0.000000 1.270000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.010000 0.010000 0.010000
+            }
+          }
+        ]
+        name "sonar_front_left_sensor"
+        boundingObject Box {
+           size 0.010000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.000000 0.000000 -0.050000
+        children [
+          Pose {
+            rotation 1.000000 0.000000 0.000000 1.570796
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 0
+                }
+                geometry Cylinder {
+                  radius 0.01
+                  height 0.01
+                }
+              }
+            ]
+          }
+          Pose {
+            translation 0.000000 0.005000 0.000000
+            rotation 1.000000 0.000000 0.000000 1.570796
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 0
+                }
+                geometry Sphere {
+                  radius 0.01
+                }
+              }
+            ]
+          }
+          Pose {
+            translation 0.000000 -0.005000 0.000000
+            rotation 1.000000 0.000000 0.000000 1.570796
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 0
+                }
+                geometry Sphere {
+                  radius 0.01
+                }
+              }
+            ]
+          }
+        ]
+        name "gps_sensor"
+        boundingObject Group {
+          children [
+            Pose {
+              rotation 1.000000 0.000000 0.000000 1.570796
+              children [
+                Cylinder {
+                  radius 0.01
+                  height 0.01
+                }
+              ]
+            }
+            Pose {
+              translation 0.000000 0.005000 0.000000
+              rotation 1.000000 0.000000 0.000000 1.570796
+              children [
+                Sphere {
+                  radius 0.01
+                }
+              ]
+            }
+            Pose {
+              translation 0.000000 -0.005000 0.000000
+              rotation 1.000000 0.000000 0.000000 1.570796
+              children [
+                Sphere {
+                  radius 0.01
+                }
+              ]
+            }
+          ]
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.000000 0.000000 0.050000
+        rotation -0.000000 1.000000 -0.000000 3.140000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.020000 0.020000 0.020000
+            }
+          }
+        ]
+        name "camera_sensor"
+        boundingObject Box {
+           size 0.020000 0.020000 0.020000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.000000 -0.025000 0.025000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.010000 0.010000 0.010000
+            }
+          }
+        ]
+        name "inertial_unit_sensor"
+        boundingObject Box {
+           size 0.010000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.000000 -0.025000 -0.026000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.010000 0.010000 0.010000
+            }
+          }
+        ]
+        name "accelerometer_sensor"
+        boundingObject Box {
+           size 0.010000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation -0.050000 0.000000 -0.050000
+        rotation 0.000000 1.000000 0.000000 0.785000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.020000 0.010000 0.010000
+            }
+          }
+        ]
+        name "back_right_radar_sensor"
+        boundingObject Box {
+           size 0.020000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation -0.050000 0.000000 0.050000
+        rotation 0.000000 -1.000000 0.000000 0.785000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.020000 0.010000 0.010000
+            }
+          }
+        ]
+        name "front_right_radar_sensor"
+        boundingObject Box {
+           size 0.020000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.050000 0.000000 -0.050000
+        rotation 0.000000 -1.000000 0.000000 0.785000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.020000 0.010000 0.010000
+            }
+          }
+        ]
+        name "back_left_radar_sensor"
+        boundingObject Box {
+           size 0.020000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+      Solid {
+        translation 0.050000 0.000000 0.050000
+        rotation 0.000000 1.000000 0.000000 0.785000
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.500000 0.500000 0.500000
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Box {
+               size 0.020000 0.010000 0.010000
+            }
+          }
+        ]
+        name "front_left_radar_sensor"
+        boundingObject Box {
+           size 0.020000 0.010000 0.010000
+        }
+        physics Physics {
+        }
+      }
+    ]
+    name IS name
+    boundingObject Box {
+       size 0.100000 0.050000 0.100000
+    }
+  }
+}
