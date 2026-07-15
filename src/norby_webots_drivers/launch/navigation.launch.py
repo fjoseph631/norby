@@ -1,3 +1,5 @@
+import os
+
 import launch
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -13,9 +15,10 @@ def generate_launch_description():
 
     nav_launch = launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
-            nav_dir + '/launch/navigation_launch.py'),
-        launch_arguments={'params_file': ws_dir +
-                          '/config/nav_params.yml'}.items()
+            os.path.join(nav_dir, 'launch', 'navigation_launch.py')),
+        launch_arguments={
+            'params_file': os.path.join(ws_dir, 'config', 'nav_params.yml'),
+        }.items(),
     )
 
     map_saver_node = Node(

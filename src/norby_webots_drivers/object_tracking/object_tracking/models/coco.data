@@ -1,7 +1,6 @@
 classes= 80
-train  = /home/pjreddie/data/coco/trainvalno5k.txt
-valid  = ./coco_testdev
+train  = data/train.txt
+valid  = data/valid.txt
 #valid = data/coco_val_5k.list
-names = /home/frantzcito/Project/Object_Detector/Models/data/coco.names
-backup = /home/pjreddie/backup/
-
+names = data/coco.names
+backup = backup/

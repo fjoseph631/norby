@@ -36,7 +36,7 @@ class Object_Detector:
          color = (255, 0, 0)
          thickness = 2
          # in place of deepsort's featrue vector, using a histogram of the image within the bounding box
-         image = np.uint64(frame)
+         image = np.uint8(frame)
          ROI = image[ymin:ymax, xmin:xmax]
          # cv.putText(frame,det.name,org,font,fontScale,color,thickness, cv.LINE_AA)
          hist_full = cv.calcHist([ROI], [0], None, [256], [0, 256])

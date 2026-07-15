@@ -29,9 +29,10 @@ def generate_launch_description():
 
     slam_launch = launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
-            slam_dir + '/launch/online_async_launch.py'),
-        launch_arguments={'params_file': ws_dir +
-                          '/config/slam_config.yml'}.items()
+            os.path.join(slam_dir, 'launch', 'online_async_launch.py')),
+        launch_arguments={
+            'params_file': os.path.join(ws_dir, 'config', 'slam_config.yml'),
+        }.items(),
     )
     ld.add_action(pcl_to_laser_node)
     ld.add_action(footprint_publisher)

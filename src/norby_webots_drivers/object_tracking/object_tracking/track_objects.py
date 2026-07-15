@@ -5,9 +5,9 @@ import pathlib
 from pathlib import Path
 import os
 import itertools
+import boxmot
 from object_tracking import object_tracker
 from object_tracking import object_detector
-from object_tracking import track_objects
 from ament_index_python.packages import get_package_share_directory
 import pickle
 from object_tracking.object_tracker import Object_Tracker
@@ -27,14 +27,14 @@ object_detector_object = pyyolo.YOLO(coco_config_path, coco_weights_path,
                                      coco_meta_path, detection_threshold=0.3, hier_threshold=0.5, nms_threshold=0.25)
 
 # main
-tracker = boxmot.create_tracker(
-    tracking_method="bytetrack",
-    yolo_model="yolov9n.pt",
-    device="cuda"
-)
+# tracker = boxmot.create_tracker(
+#     tracking_method="bytetrack",
+#     yolo_model="yolov9n.pt",
+#     device="cuda"
+# )
 
-tracker.track(source="input_video.mp4", save=True)
-tracker.track()
+# tracker.track(source="input_video.mp4", save=True)
+# tracker.track()
 
 def track_objects(img, object_tracker):
    # classnames = []

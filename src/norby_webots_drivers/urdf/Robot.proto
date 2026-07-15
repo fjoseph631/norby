@@ -2,7 +2,7 @@
 # license: Apache License 2.0
 # license url: http://www.apache.org/licenses/LICENSE-2.0
 # This is a proto file for Webots for the Robot
-# Extracted from: /home/frant/norby/src/norby_webots_drivers/urdf/webots.urdf
+# Extracted from: norby_webots_drivers/urdf/webots.urdf
 
 PROTO Robot [
   field  SFVec3f     translation     0 0 0

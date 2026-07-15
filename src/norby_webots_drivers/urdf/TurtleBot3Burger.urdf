@@ -2,6 +2,39 @@
 <robot name="TurtleBot3Burger">
     <webots>
         <plugin type="webots_ros2_control::Ros2Control" />
+
+        <device reference="gps" type="GPS">
+            <ros>
+                <topicName>/gps_sensor</topicName>
+                <frameName>gps_link</frameName>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+
+        <device reference="camera" type="Camera">
+            <ros>
+                <topicName>/front_camera/camera_raw</topicName>
+                <frameName>camera</frameName>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+
+        <device reference="LDS-01" type="Lidar">
+            <ros>
+                <topicName>/base_cloud</topicName>
+                <frameName>LDS-01</frameName>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <topicName>/imu</topicName>
+            <frameName>imu_link</frameName>
+            <alwaysOn>true</alwaysOn>
+            <inertialUnitName>inertial unit</inertialUnitName>
+            <gyroName>gyro(1)</gyroName>
+            <accelerometerName>accelerometer(1)</accelerometerName>
+        </plugin>
     </webots>
   <link name="base_link">
     <visual>
@@ -49,6 +82,20 @@
     <parent link="base_link"/>
     <child link="accelerometer"/>
     <origin xyz="-0.032 0 0.078" rpy="0 0 0"/>
+  </joint>
+  <link name="imu_link">
+  </link>
+  <joint name="base_link_imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="-0.032 0 0.078" rpy="0 0 0"/>
+  </joint>
+  <link name="gps_link">
+  </link>
+  <joint name="base_link_gps_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="gps_link"/>
+    <origin xyz="-0.03 0 0.153" rpy="0 0 0"/>
   </joint>
   <joint name="left wheel motor" type="continuous">
     <parent link="base_link"/>

@@ -15,6 +15,10 @@ def generate_launch_description():
         package = ws_package,
         executable = "camera_node"
     )
+    tracker_node = Node(
+        package = ws_package,
+        executable = "object_tracker_node"
+    )
     robot_description_path = os.path.join(ws_dir, 'urdf', 'TurtleBot3Burger.urdf')
     with open(robot_description_path, 'r') as urdf_file:
         robot_description_content = urdf_file.read()
@@ -29,7 +33,7 @@ def generate_launch_description():
     )
     ld.add_action(camera_node)
     ld.add_action(robot_state_publisher)
-    #ld.add_action(tracker_node)
+    ld.add_action(tracker_node)
     ws_package = "norby_webots_drivers"
     
     ws_dir = get_package_share_directory(ws_package)

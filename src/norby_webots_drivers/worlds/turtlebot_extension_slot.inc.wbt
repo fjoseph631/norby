@@ -1,0 +1,19 @@
+# Paste into TurtleBot3Burger extensionSlot in apartment.wbt
+Accelerometer {
+  name "accelerometer(1)"
+}
+Gyro {
+  name "gyro(1)"
+}
+InertialUnit {
+}
+GPS {
+}
+Camera {
+  name "camera"
+  translation 0 0.01 0.04
+  width 640
+  height 480
+}
+RobotisLds01 {
+}

@@ -61,7 +61,7 @@ class RadarSubscriber(Node):
         )
         self.gps_subscription = self.create_subscription(
             PointStamped,
-            '/gps_sensor/gps',
+            '/gps_sensor',
             self.gps_callback,
             qos_profile_sensor_data
 
